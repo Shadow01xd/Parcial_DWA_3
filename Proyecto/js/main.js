@@ -226,3 +226,50 @@ document.addEventListener('DOMContentLoaded', function() {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });
 });
+
+// ============================================
+// SISTEMA DE ANIMACIONES DE ENTRADA
+// ============================================
+
+// Intersection Observer para animaciones de entrada
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const animationObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            // Para evitar que se repita la animación, desconectamos el observer de ese elemento
+            animationObserver.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observar elementos con clases de animación generales
+document.addEventListener('DOMContentLoaded', function() {
+    const animatedElements = document.querySelectorAll('.fade-in-up, .slide-in-left, .slide-in-right, .scale-in, .rotate-in');
+    animatedElements.forEach(el => {
+        animationObserver.observe(el);
+    });
+});
+(function() {
+    'use strict';
+    const form = document.getElementById('contactForm');
+    
+    form.addEventListener('submit', function(event) {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        } else {
+            event.preventDefault();
+            // Simulación de envío exitoso
+            alert('¡Mensaje enviado con éxito! Te contactaré pronto.');
+            form.reset();
+            form.classList.remove('was-validated');
+        }
+        
+        form.classList.add('was-validated');
+    }, false);
+})();
