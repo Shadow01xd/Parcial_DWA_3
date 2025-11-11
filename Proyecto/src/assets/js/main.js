@@ -220,7 +220,7 @@ if (gameContainer) {
 }
 
 // Inicializar tooltips de Bootstrap
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl);
@@ -237,7 +237,7 @@ const observerOptions = {
     rootMargin: '0px 0px -50px 0px'
 };
 
-const animationObserver = new IntersectionObserver(function(entries) {
+const animationObserver = new IntersectionObserver(function (entries) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('animate');
@@ -248,28 +248,39 @@ const animationObserver = new IntersectionObserver(function(entries) {
 }, observerOptions);
 
 // Observar elementos con clases de animación generales
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const animatedElements = document.querySelectorAll('.fade-in-up, .slide-in-left, .slide-in-right, .scale-in, .rotate-in');
     animatedElements.forEach(el => {
         animationObserver.observe(el);
     });
 });
-(function() {
+(function () {
     'use strict';
     const form = document.getElementById('contactForm');
-    
-    form.addEventListener('submit', function(event) {
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
         if (!form.checkValidity()) {
-            event.preventDefault();
+            // Solo marcamos el formulario como "validado" cuando hay errores
             event.stopPropagation();
-        } else {
-            event.preventDefault();
-            // Simulación de envío exitoso
-            alert('¡Mensaje enviado con éxito! Te contactaré pronto.');
-            form.reset();
-            form.classList.remove('was-validated');
+            form.classList.add('was-validated');
+            return;
         }
-        
-        form.classList.add('was-validated');
+
+        // Éxito (simulación de envío)
+        alert('¡Mensaje enviado con éxito! Te contactaré pronto.');
+
+        // Limpiar formulario y estados de validación
+        form.reset();
+        form.classList.remove('was-validated');
+
+        // (Opcional) por si en el futuro usas .is-valid / .is-invalid
+        Array.from(form.querySelectorAll('.is-valid, .is-invalid'))
+            .forEach(el => el.classList.remove('is-valid', 'is-invalid'));
+
+        // Asegurar selects y checkboxes limpios
+        form.querySelectorAll('select').forEach(s => (s.selectedIndex = 0));
+        form.querySelectorAll('input[type="checkbox"]').forEach(c => (c.checked = false));
     }, false);
 })();
