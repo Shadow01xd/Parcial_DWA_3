@@ -780,6 +780,11 @@ body {
     border: 2px solid var(--bs-primary);
 }
 
+.timeline-icon-symbol {
+    font-size: 2rem;
+    color: var(--bs-primary);
+}
+
 /* Blog Cards */
 .blog-card {
     transition: transform 0.3s, box-shadow 0.3s;
@@ -1126,9 +1131,24 @@ body {
         height: 50px;
     }
 
+    .timeline-icon-symbol {
+        font-size: 1.6rem;
+    }
+
     .service-card,
     .project-card,
     .blog-card {
         margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .timeline-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .timeline-icon-symbol {
+        font-size: 1.4rem;
     }
 }
