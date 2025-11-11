@@ -88,27 +88,28 @@ body {
     z-index: 10;
 }
 
- /* Ajustes para móviles */
- @media (max-width: 768px) {
+/* Ajustes para móviles */
+@media (max-width: 768px) {
     .hero-section {
         padding-top: 70px;
         min-height: 90vh;
     }
+
     .navbar {
         background-color: rgba(10, 22, 40, 0.95) !important;
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
     }
-    
+
     .hero-section h1 {
         font-size: 2.5rem !important;
         text-align: center;
     }
-    
+
     .hero-section .lead {
         text-align: center;
     }
-    
+
     /* Ajuste del carrusel para móviles */
     .carousel-image-placeholder {
         height: 300px !important;
@@ -119,7 +120,7 @@ body {
     .hero-section h1 {
         font-size: 2rem !important;
     }
-    
+
     .carousel-image-placeholder {
         height: 250px !important;
     }
@@ -617,6 +618,7 @@ body {
 }
 
 @keyframes floatIcon {
+
     0%,
     100% {
         transform: translateY(0);
@@ -969,7 +971,7 @@ body {
     background-size: contain !important;
     background-repeat: no-repeat !important;
     transition: transform 0.2s ease, filter 0.2s ease;
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.45));
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
 }
 
 .portfolio-carousel-btn .carousel-control-prev-icon {
@@ -993,16 +995,30 @@ body {
     max-height: 72vh;
 }
 
+@media (max-width: 1200px) {
+    .portfolio-slide {
+        max-height: 70vh;
+    }
+}
+
 @media (max-width: 992px) {
-    .portfolio-slide { max-height: 64vh; }
+    .portfolio-slide {
+        max-height: 64vh;
+    }
 }
 
 @media (max-width: 768px) {
-    .portfolio-slide { aspect-ratio: 4 / 3; max-height: 58vh; }
+    .portfolio-slide {
+        aspect-ratio: 4 / 3;
+        max-height: 58vh;
+    }
 }
 
 @media (max-width: 576px) {
-    .portfolio-slide { aspect-ratio: 4 / 3; max-height: 52vh; }
+    .portfolio-slide {
+        aspect-ratio: 4 / 3;
+        max-height: 52vh;
+    }
 }
 
 /* Imagen full-bleed y nítida */
@@ -1013,4 +1029,18 @@ body {
     object-position: center;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
+}
+
+@media (min-width: 1200px) {
+    .hero-section {
+        min-height: 100vh;
+    }
+
+    .portfolio-slide {
+        max-height: 72vh;
+    }
+
+    .carousel-image-placeholder {
+        height: 500px !important;
+    }
 }
